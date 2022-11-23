@@ -1,4 +1,6 @@
-# SE98 theme for window managers: xfwm4, metacity-1 and for GTK2, GTK3.
+# SE98 window manager theme
+
+Theme for xfwm4, metacity-1 and for GTK2, GTK3 widget engines.
 
 [![Mate Desktop](screenshot_th.png)](screenshot.png)
 

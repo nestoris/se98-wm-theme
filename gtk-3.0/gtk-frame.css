@@ -80,7 +80,7 @@ terminal-window notebook, VteTerminal, vte-terminal {
 scrolledwindow.frame {
    background-repeat: no-repeat;
    background-position: top left;
-   background-image: url("assets/treeview.png");
+   background-image: url("assets/wvleft.png");
   background-color: @theme_base_color; }
 
 
@@ -120,9 +120,9 @@ paned > stack > grid > scrolledwindow, .sidebar {
    background-repeat: no-repeat;
    background-position: top left;
 /*   color: @selected_fg_color;*/
-   background-image: url("assets/treeview.png");
+   background-image: url("assets/wvleft.png");
    background-size: cover;
-   background-size: 174px 144px;}
+   background-size: 182px 237px;}
 
 /*.sidebar list row label, .caja-side-pane treeview, .sidebar treeview, .gedit-side-panel-paned treeview {
    padding-left: 6px;

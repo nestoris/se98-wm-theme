@@ -118,7 +118,7 @@ messagedialog image {
 }
 
 .caja-side-pane scrolledwindow {
-   background-image: url("assets/treeview.png");
+   background-image: url("assets/wvleft.png");
    background-position: left top; 
    background-repeat: no-repeat;
 }

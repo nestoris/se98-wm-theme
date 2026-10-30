@@ -122,10 +122,11 @@ calendar.highlight {
 
 paned > scrolledwindow, box > scrolledwindow, overlay > scrolledwindow, notebook > * > scrolledwindow,
 paned > * > notebook > stack > * > scrolledwindow, viewport > grid > scrolledwindow {
-   padding: 1px;
+   padding: 0px;
    margin: 0px;
-   background-color: @theme_base_color;
+   background-color: @theme_bg_color;  /* СЕРЫЙ */
 }
+
 
 
 /* Tree view */
@@ -133,7 +134,7 @@ paned > * > notebook > stack > * > scrolledwindow, viewport > grid > scrolledwin
 
 treeview {
    background-color: @base_color;
-   color: @fg_color;
+   color: @bg_color;
    -treeview-vertical-separator: 0; }
   
 treeview.view:selected, treeview.view:selected:focus {
@@ -147,8 +148,7 @@ treeview.view:selected, treeview.view:selected:focus {
 list {
    color: @text_color;
    background-color: @theme_base_color;
-   color: @text_color;
-   background-color: @theme_base_color; }
+}
   
 list row {
    outline: none;

@@ -143,3 +143,12 @@ paned > stack > grid > scrolledwindow, .sidebar {
    padding-left: 0px;
    background-color: transparent;
 }
+
+/* Применить groove к области со списком тем */
+GtkDialog frame.border-groove,
+GtkDialog .frame.border-groove,
+window.background > GtkBox > GtkBox > GtkFrame.frame {
+    border: 2px solid @border_dark;
+    border-image: url("assets/frame_groove.png");
+    border-image-slice: 2 2 2 2;
+}

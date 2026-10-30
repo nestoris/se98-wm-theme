@@ -425,6 +425,15 @@ check:indeterminate, .check:indeterminate {
 check:indeterminate:disabled, .check:indeterminate:disabled {
    -gtk-icon-source: url("assets/c_box_ins_mixed.png"); }
 
+/* Эффект нажатия — используем disabled-иконки */
+check:active, .check:active {
+   -gtk-icon-source: url("assets/c_box_ins.png");
+}
+
+check:active:checked, .check:active:checked {
+   -gtk-icon-source: url("assets/c_box_ins_checked.png");
+}
+
 radio, .radio {
    -gtk-icon-source: url("assets/radio.png"); }
 
@@ -442,6 +451,17 @@ radio:indeterminate, .radio:indeterminate {
 
 radio:indeterminate:disabled, .radio:indeterminate:disabled {
    -gtk-icon-source: url("assets/radio_ins_mixed.png"); }
+
+/* Для радиокнопок по аналогии */
+radio:active, .radio:active {
+   -gtk-icon-source: url("assets/radio_ins.png");
+}
+
+radio:active:checked, .radio:active:checked {
+   -gtk-icon-source: url("assets/radio_ins_checked.png");
+}
+
+
 
 menuitem check, menuitem radio {
    min-height: 16px;

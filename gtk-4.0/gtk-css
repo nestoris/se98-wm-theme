@@ -1,0 +1,779 @@
+/* 
+ * Windows 98/2000 Classic Style для GTK 4.0
+ * Основан на стиле "SE98" 
+ */
+
+/* 
+ * ==============================================
+ * ПЕРЕМЕННЫЕ ЦВЕТОВ
+ * ==============================================
+ */
+ 
+/* Основные цвета */
+@define-color bg_color #D4D0C8;
+@define-color fg_color #000000;
+@define-color base_color #FFFFFF;
+@define-color text_color #000000;
+@define-color selected_bg_color #316AC5;  /* Классический синий выделения WinXP */
+@define-color selected_fg_color #FFFFFF;
+@define-color light_shadow #FFFFFF;
+@define-color dark_shadow #808080;        /* Чуть светлее для лучшей читаемости */
+@define-color borders #000000;
+
+/* Тематические цвета */
+@define-color theme_bg_color @bg_color;
+@define-color theme_fg_color @fg_color;
+@define-color theme_base_color @base_color;
+@define-color theme_text_color @text_color;
+@define-color theme_selected_bg_color @selected_bg_color;
+@define-color theme_selected_fg_color @selected_fg_color;
+
+/* Кнопки */
+@define-color button_bg_color @bg_color;
+@define-color button_fg_color @fg_color;
+@define-color button_hover_bg_color @bg_color;
+@define-color button_active_bg_color @bg_color;
+
+/* Состояния */
+@define-color disabled_fg_color #A0A0A0;
+@define-color disabled_bg_color @bg_color;
+
+/* Заголовки окон */
+@define-color headerbar_bg_color @button_bg_color;
+@define-color headerbar_fg_color @fg_color;
+@define-color titlebar_bg_color @base_color;
+@define-color titlebar_fg_color @text_color;
+
+/* Индикаторы уведомлений */
+@define-color info_bg_color #316AC5;
+@define-color info_fg_color #FFFFFF;
+@define-color warning_bg_color #FF8300;
+@define-color warning_fg_color #FFFFFF;
+@define-color question_bg_color #2C2C2C;
+@define-color question_fg_color #FFFFFF;
+@define-color error_bg_color #FF0000;
+@define-color error_fg_color #FFFFFF;
+
+/* Всплывающие подсказки */
+@define-color tooltip_bg_color @base_color;
+@define-color tooltip_fg_color @text_color;
+
+/* Меню */
+@define-color menu_bg_color @bg_color;
+@define-color menu_fg_color @fg_color;
+
+/* ==============================================
+ * ОБЩИЕ СТИЛИ
+ * ==============================================
+ */
+ 
+* {
+  outline-width: 1px;
+  outline-offset: 0;
+  outline-style: dotted;
+  outline-color: @borders;
+  background-clip: padding-box;
+}
+
+.background {
+  color: @theme_fg_color;
+  background-color: @theme_bg_color;
+}
+
+*:disabled {
+  color: @disabled_fg_color;
+  text-shadow: 1px 1px 0 @light_shadow;
+}
+
+*:hover {
+  -gtk-icon-effect: highlight;
+}
+
+/* ==============================================
+ * КНОПКИ
+ * ==============================================
+ */
+
+button {
+  padding: 4px 6px;
+  border-radius: 0;
+  color: @button_fg_color;
+  border-top: 1px solid @button_bg_color;
+  border-left: 1px solid @button_bg_color;
+  border-right: 1px solid @dark_shadow;
+  border-bottom: 1px solid @dark_shadow;
+  background-color: @button_bg_color;
+  box-shadow: 
+    inset -1px 0 @dark_shadow, 
+    inset 0 -1px @dark_shadow, 
+    inset 1px 0 @light_shadow, 
+    inset 0 1px @light_shadow;
+  outline-offset: -4px;
+  min-height: 24px;
+}
+
+button:hover {
+  color: @button_fg_color;
+  background-color: @button_hover_bg_color;
+  box-shadow: 
+    inset -1px 0 @dark_shadow, 
+    inset 0 -1px @dark_shadow, 
+    inset 1px 0 @light_shadow, 
+    inset 0 1px @light_shadow;
+}
+
+button:active,
+button:checked {
+  color: @theme_fg_color;
+  border-color: @dark_shadow;
+  background-color: @button_active_bg_color;
+  box-shadow: 
+    inset 1px 1px @dark_shadow,
+    inset -1px -1px @light_shadow;
+}
+
+button:disabled {
+  color: @disabled_fg_color;
+  text-shadow: 1px 1px @light_shadow;
+}
+
+/* Плоские кнопки */
+button.flat,
+button:not(.image-button):not(.text-button) {
+  border-color: transparent;
+  border-radius: 2px;
+  color: @theme_fg_color;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+button.flat:hover {
+  border-color: @button_bg_color;
+  background-color: @button_bg_color;
+  box-shadow: 
+    inset -1px -1px @dark_shadow, 
+    inset 1px 1px @light_shadow;
+}
+
+button.flat:active,
+button.flat:checked {
+  color: @button_fg_color;
+  border-color: @button_bg_color;
+  background-color: @button_bg_color;
+  background-image: none;
+  box-shadow: 
+    inset 1px 1px @dark_shadow, 
+    inset -1px -1px @light_shadow;
+}
+
+/* Кнопки в заголовках */
+headerbar button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+  color: @headerbar_fg_color;
+  padding: 2px;
+}
+
+headerbar button:hover {
+  background-color: @bg_color;
+  border: 1px solid @borders;
+  border-top: 1px solid @light_shadow;
+  border-left: 1px solid @light_shadow;
+  box-shadow: inset -1px -1px @dark_shadow;
+  color: @fg_color;
+}
+
+headerbar button:active,
+headerbar button:checked {
+  background-color: @bg_color;
+  border: 1px solid @dark_shadow;
+  box-shadow: inset 1px 1px @dark_shadow;
+  color: @fg_color;
+}
+
+/* ==============================================
+ * ТЕКСТОВЫЕ ПОЛЯ
+ * ==============================================
+ */
+
+entry {
+  padding: 3px;
+  border: 1px solid @dark_shadow;
+  border-bottom: 1px solid @light_shadow;
+  border-right: 1px solid @light_shadow;
+  border-radius: 0;
+  box-shadow: 
+    inset 1px 1px @dark_shadow, 
+    inset -1px -1px @theme_bg_color;
+  color: @text_color;
+  background-color: @theme_base_color;
+  caret-color: @text_color;
+}
+
+entry:disabled {
+  background-color: @bg_color;
+  color: @disabled_fg_color;
+}
+
+entry:selected,
+entry selection {
+  color: @theme_selected_fg_color;
+  background-color: @theme_selected_bg_color;
+}
+
+/* ==============================================
+ * МЕНЮ
+ * ==============================================
+ */
+
+menu,
+popover {
+  padding: 2px;
+  border-top: 1px solid @bg_color;
+  border-bottom: 1px solid @borders;
+  border-left: 1px solid @bg_color;
+  border-right: 1px solid @borders;
+  border-radius: 0;
+  box-shadow: 
+    inset 1px 1px @light_shadow, 
+    inset -1px -1px @dark_shadow;
+  background-color: @theme_bg_color;
+  color: @fg_color;
+}
+
+menuitem {
+  margin: 0 2px;
+  padding: 4px;
+}
+
+menuitem:first-child {
+  margin-top: 2px;
+}
+
+menuitem:last-child {
+  margin-bottom: 2px;
+}
+
+menuitem:hover,
+menuitem:active {
+  background-color: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+menuitem:disabled {
+  color: @disabled_fg_color;
+  text-shadow: 1px 1px @light_shadow;
+}
+
+/* Акселераторы */
+menuitem accelerator {
+  color: alpha(currentColor, 0.55);
+}
+
+menuitem accelerator:hover {
+  color: alpha(@theme_selected_fg_color, 0.8);
+}
+
+menuitem accelerator:disabled {
+  color: @disabled_fg_color;
+}
+
+/* ==============================================
+ * ЗАГОЛОВКИ ОКОН
+ * ==============================================
+ */
+
+headerbar {
+  min-height: 28px;
+  padding: 0 2px;
+  background-color: @headerbar_bg_color;
+  border-bottom: 1px solid @dark_shadow;
+  border-right: 1px solid @dark_shadow;
+  box-shadow: none;
+  color: @headerbar_fg_color;
+}
+
+headerbar:backdrop {
+  background-color: @bg_color;
+  color: @disabled_fg_color;
+}
+
+.titlebar {
+  background-color: @titlebar_bg_color;
+  color: @titlebar_fg_color;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 9pt;
+  color: @selected_fg_color;
+}
+
+/* ==============================================
+ * ПРОКРУТКА
+ * ==============================================
+ */
+
+scrolledwindow {
+  border: 1px solid @dark_shadow;
+  border-bottom: 1px solid @light_shadow;
+  border-right: 1px solid @light_shadow;
+  border-radius: 0;
+  box-shadow: 
+    inset 1px 1px @dark_shadow, 
+    inset -1px -1px @theme_bg_color;
+}
+
+scrollbar {
+  background-color: @bg_color;
+  background-image: url("assets/scrollbar_trough.png");
+  border: none;
+}
+
+scrollbar trough {
+  border-radius: 0;
+  border: none;
+}
+
+scrollbar slider {
+  min-width: 16px;
+  min-height: 32px;
+  margin: 0;
+  border-top: 1px solid @bg_color;
+  border-left: 1px solid @bg_color;
+  border-right: 1px solid @dark_shadow;
+  border-bottom: 1px solid @dark_shadow;
+  background-color: @button_bg_color;
+  box-shadow: 
+    inset -1px 0 @dark_shadow, 
+    inset 0 -1px @dark_shadow, 
+    inset 1px 0 @light_shadow, 
+    inset 0 1px @light_shadow;
+}
+
+scrollbar button {
+  min-width: 16px;
+  min-height: 16px;
+  margin: 0;
+  background-color: @button_bg_color;
+  background-image: url("assets/scrollbar_button.png");
+  border: 1px solid @dark_shadow;
+  box-shadow: 
+    inset -1px -1px @dark_shadow, 
+    inset 1px 1px @light_shadow;
+  padding: 0;
+}
+
+scrollbar button:active {
+  border: 1px solid @dark_shadow;
+  box-shadow: 
+    inset 1px 1px @dark_shadow,
+    inset -1px -1px @light_shadow;
+}
+
+/* Кнопки со стрелками */
+scrollbar.vertical button.top {
+  -gtk-icon-source: url("assets/arrow_up.png");
+}
+
+scrollbar.vertical button.bottom {
+  -gtk-icon-source: url("assets/arrow_down.png");
+}
+
+scrollbar.horizontal button.left {
+  -gtk-icon-source: url("assets/arrow_left.png");
+}
+
+scrollbar.horizontal button.right {
+  -gtk-icon-source: url("assets/arrow_right.png");
+}
+
+/* ==============================================
+ * ВКЛАДКИ (NOTEBOOK)
+ * ==============================================
+ */
+
+notebook {
+  padding: 0;
+  background-color: transparent;
+}
+
+notebook > header {
+  background-color: @theme_bg_color;
+  border: none;
+}
+
+notebook > header tabs {
+  background-color: transparent;
+}
+
+notebook tab {
+  padding: 2px 6px;
+  border-style: solid;
+  border-radius: 0;
+  border-color: transparent;
+  color: @theme_fg_color;
+  background-color: @bg_color;
+  outline-width: 0;
+}
+
+notebook tab:checked {
+  color: @theme_fg_color;
+  border-color: @borders;
+  background-color: @bg_color;
+}
+
+/* Вкладки сверху */
+notebook > header.top tabs tab {
+  border-width: 5px 5px 2px 5px;
+  border-image: url("assets/tab_top_checked.png");
+  border-image-slice: 5 5 2 5;
+}
+
+notebook > header.top tabs tab:checked {
+  margin-bottom: -1px;
+  border-image: url("assets/tab_top.png");
+  border-image-slice: 5 5 2 5;
+}
+
+notebook > stack:not(:only-child) {
+  margin: 0;
+  border: 1px solid @borders;
+  border-top: 1px solid @light_shadow;
+  border-left: 1px solid @light_shadow;
+  padding: 2px;
+  background-color: @bg_color;
+  box-shadow: inset -1px -1px @dark_shadow;
+}
+
+/* ==============================================
+ * ВЫБОР (ПЕРЕКЛЮЧАТЕЛИ И РАДИОКНОПКИ)
+ * ==============================================
+ */
+
+checkbutton,
+radiobutton {
+  outline-offset: 0;
+}
+
+checkbutton:disabled,
+radiobutton:disabled {
+  color: @disabled_fg_color;
+  text-shadow: 1px 1px @light_shadow;
+}
+
+check {
+  -gtk-icon-source: url("assets/c_box.png");
+  margin: 4px;
+  border-style: none;
+  background-color: transparent;
+}
+
+check:disabled {
+  -gtk-icon-source: url("assets/c_box_ins.png");
+}
+
+check:checked {
+  -gtk-icon-source: url("assets/c_box_checked.png");
+}
+
+check:checked:disabled {
+  -gtk-icon-source: url("assets/c_box_ins_checked.png");
+}
+
+check:indeterminate {
+  -gtk-icon-source: url("assets/c_box_mixed.png");
+}
+
+check:indeterminate:disabled {
+  -gtk-icon-source: url("assets/c_box_ins_mixed.png");
+}
+
+radio {
+  -gtk-icon-source: url("assets/radio.png");
+  margin: 4px;
+  border-style: none;
+  background-color: transparent;
+}
+
+radio:disabled {
+  -gtk-icon-source: url("assets/radio_ins.png");
+}
+
+radio:checked {
+  -gtk-icon-source: url("assets/radio_checked.png");
+}
+
+radio:checked:disabled {
+  -gtk-icon-source: url("assets/radio_ins_checked.png");
+}
+
+radio:indeterminate {
+  -gtk-icon-source: url("assets/radio_mixed.png");
+}
+
+radio:indeterminate:disabled {
+  -gtk-icon-source: url("assets/radio_ins_mixed.png");
+}
+
+/* ==============================================
+ * ПЕРЕКЛЮЧАТЕЛИ (SWITCH)
+ * ==============================================
+ */
+
+switch {
+  min-width: 80px;
+  min-height: 24px;
+  color: transparent;
+  background-color: transparent;
+  background-image: url("assets/switch.png");
+  outline-offset: -4px;
+}
+
+switch:checked {
+  background-image: url("assets/switch_checked.png");
+}
+
+switch:disabled {
+  background-image: url("assets/switch_disabled.png");
+}
+
+switch:checked:disabled {
+  background-image: url("assets/switch_checked_disabled.png");
+}
+
+switch slider {
+  background-color: transparent;
+}
+
+/* ==============================================
+ * ПОЛОСЫ ПРОГРЕССА
+ * ==============================================
+ */
+
+progressbar {
+  padding: 0;
+  border: none;
+  color: mix(@theme_fg_color, @theme_selected_fg_color, 0.5);
+  background-color: transparent;
+}
+
+progressbar trough {
+  padding: 1px;
+  border: 1px solid @dark_shadow;
+  border-bottom: 1px solid @light_shadow;
+  border-right: 1px solid @light_shadow;
+  border-radius: 0;
+  box-shadow: 
+    inset 1px 1px @dark_shadow, 
+    inset -1px -1px @theme_bg_color;
+  background-color: @theme_base_color;
+}
+
+progressbar progress {
+  border: none;
+  border-radius: 0;
+  background-color: @theme_selected_bg_color;
+}
+
+/* ==============================================
+ * ШКАЛЫ (SCALE)
+ * ==============================================
+ */
+
+scale {
+  min-height: 6px;
+  min-width: 10px;
+  padding: 12px;
+}
+
+scale trough {
+  border-top: 1px solid @dark_shadow;
+  border-left: 1px solid @dark_shadow;
+  border-right: 1px solid @light_shadow;
+  border-bottom: 1px solid @light_shadow;
+  border-radius: 0;
+  background-color: @borders;
+  outline-offset: 2px;
+}
+
+scale slider {
+  border-radius: 0;
+  background-color: @button_bg_color;
+  border-top: 1px solid @bg_color;
+  border-left: 1px solid @bg_color;
+  border-right: 1px solid @dark_shadow;
+  border-bottom: 1px solid @dark_shadow;
+  box-shadow: 
+    inset -1px 0 @dark_shadow, 
+    inset 0 -1px @dark_shadow, 
+    inset 1px 0 @light_shadow, 
+    inset 0 1px @light_shadow;
+}
+
+/* ==============================================
+ * СПИСКИ И ДЕРЕВЬЯ
+ * ==============================================
+ */
+
+treeview,
+listview {
+  background-color: @base_color;
+  color: @text_color;
+}
+
+treeview:selected,
+listview row:selected {
+  color: @theme_selected_fg_color;
+  background-color: @theme_selected_bg_color;
+}
+
+/* ==============================================
+ * РАМКИ
+ * ==============================================
+ */
+
+frame > border {
+  padding: 1px;
+  border: 1px solid @dark_shadow;
+  border-bottom: 1px solid @light_shadow;
+  border-right: 1px solid @light_shadow;
+  box-shadow: 
+    inset 1px 1px @light_shadow, 
+    inset -1px -1px @dark_shadow;
+}
+
+/* ==============================================
+ * ВСПЛЫВАЮЩИЕ ПОДСКАЗКИ
+ * ==============================================
+ */
+
+tooltip {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+tooltip.background {
+  border-width: 1px;
+  border-style: solid;
+  border-color: @borders;
+  background-color: @tooltip_bg_color;
+}
+
+tooltip.background label {
+  padding: 1px;
+}
+
+tooltip * {
+  background-color: transparent;
+  color: @tooltip_fg_color;
+}
+
+/* ==============================================
+ * КАЛЕНДАРЬ
+ * ==============================================
+ */
+
+calendar {
+  padding: 2px;
+  border: 1px solid @borders;
+  border-radius: 0;
+  color: @text_color;
+}
+
+calendar.header {
+  border: none;
+  color: @theme_selected_bg_color;
+}
+
+calendar:selected {
+  border-radius: 0;
+  color: @theme_selected_fg_color;
+  background-color: @theme_selected_bg_color;
+}
+
+calendar:indeterminate {
+  color: alpha(currentColor, 0.55);
+}
+
+/* ==============================================
+ * РАЗДЕЛИТЕЛИ
+ * ==============================================
+ */
+
+separator {
+  min-width: 1px;
+  min-height: 1px;
+  background-color: transparent;
+}
+
+toolbar separator {
+  margin-left: 2px;
+  margin-right: 2px;
+  border: none;
+  box-shadow: 1px 0 @light_shadow;
+  background-color: @dark_shadow;
+}
+
+menuitem separator,
+menu separator {
+  margin: 2px 8px;
+  border-width: 1px;
+  border-style: none;
+  box-shadow: 0 1px @light_shadow;
+  background-color: @dark_shadow;
+}
+
+/* ==============================================
+ * ПАНЕЛИ ИНСТРУМЕНТОВ
+ * ==============================================
+ */
+
+toolbar {
+  padding: 2px;
+  margin: 0;
+  color: @fg_color;
+  background-color: @button_bg_color;
+  border: none;
+}
+
+/* ==============================================
+ * ОБЛАСТИ УВЕДОМЛЕНИЙ
+ * ==============================================
+ */
+
+.info {
+  border: 1px solid shade(@info_bg_color, 0.8);
+  color: @info_fg_color;
+  background-color: @info_bg_color;
+}
+
+.warning {
+  border: 1px solid shade(@warning_bg_color, 0.8);
+  color: @warning_fg_color;
+  background-color: @warning_bg_color;
+}
+
+.error {
+  border: 1px solid shade(@error_bg_color, 0.8);
+  color: @error_fg_color;
+  background-color: @error_bg_color;
+}
+
+.question {
+  border: 1px solid shade(@question_bg_color, 0.8);
+  color: @question_fg_color;
+  background-color: @question_bg_color;
+}
+
+/* Кнопки закрытия в уведомлениях */
+.info button.close,
+.warning button.close,
+.error button.close,
+.question button.close {
+  background-image: none;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}

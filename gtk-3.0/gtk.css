@@ -48,6 +48,7 @@
 @import url("gtk-xfce4.css");
 @import url("gtk-mate.css");
 @import url("gtk-csd.css");
+@import url("gtk-viewports.css");
 
 @define-color disabled_bg_color mix(@fg_color, @bg_color, 0.95);
 /*@define-color disabled_fg_color shade(@bg_color, 0.9);*/
@@ -97,6 +98,7 @@
 @define-color outline_color @borders;
 @define-color unfocused_borders @borders;
 /* Notification header backgrounds */
+@define-color bg_bright shade(#ffffff, 1.02);  /* чуть светлее серого, но не белый */
 @define-color info_fg_color #FFFFFF;
 @define-color info_bg_color #0055FF;
 @define-color warning_fg_color #FFFFFF;

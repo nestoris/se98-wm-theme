@@ -1,0 +1,8 @@
+viewport {
+  padding: 0px;
+  background-color: @bg_color; }
+
+view,
+.view {
+  background-color: @bg_bright;
+  color: @theme_text_color; }

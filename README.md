@@ -10,4 +10,6 @@ Xfce4:
 
 [![Xfce Desktop](xfce-desktop_th.png)](xfce-desktop.png)
 
-A fork of [Redmond97](https://github.com/matthewmx86/Redmond97) Millennium theme. Sidebar clouds are added to where I could (Thunar and Open/Save dialog). In Caja they already where.
+A fork of [Redmond97](https://github.com/matthewmx86/Redmond97) Millennium theme.
+
+The sidebar clouds are added to where I could (Thunar and Open/Save dialog), in Caja they already where. The gradient stretchable titlebar was made for Xfce4.
